@@ -38,7 +38,9 @@ def about():
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
+    # form validation method
     if form.validate_on_submit():
+        #uses a flash message to send to layout.html "get_flashed_messages()"
         flash(f'Account created for {form.username.data}!', 'success')
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
